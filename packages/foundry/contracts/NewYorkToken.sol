@@ -13,12 +13,4 @@ contract NewYorkToken is ERC20, Ownable {
         _mint(msg.sender, amount);
         console.log("Airdropped", amount, "NYT tokens to", msg.sender);
     }
-
-    function getName() public view returns (string memory) {
-        return name();
-    }
-
-     function getSymbol() public view returns (string memory) {
-        return symbol();
-    }
 }
