@@ -30,4 +30,11 @@ contract NewYorkTokenTest is Test {
                 keccak256(abi.encodePacked(actualSymbol))
         );
     }
+
+    function testInitialSupplyIsZero() public view {
+        uint256 expectedInitialSupply = 0;
+        uint256 actualInitialSupply = newYorkToken.totalSupply();
+
+        require(expectedInitialSupply == actualInitialSupply);
+    }
 }
