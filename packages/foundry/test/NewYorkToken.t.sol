@@ -10,4 +10,14 @@ contract NewYorkTokenTest is Test {
     function setUp() public {
         newYorkToken = new NewYorkToken();
     }
+
+    function testNameIsInitializedCorrectly() public view {
+        string memory expectedName = "NewYorkToken";
+        string memory actualName = newYorkToken.name();
+
+        require(
+            keccak256(abi.encodePacked(expectedName)) ==
+                keccak256(abi.encodePacked(actualName))
+        );
+    }
 }
