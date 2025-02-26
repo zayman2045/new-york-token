@@ -31,10 +31,24 @@ contract NewYorkTokenTest is Test {
         );
     }
 
-    function testInitialSupplyIsZero() public view {
-        uint256 expectedInitialSupply = 0;
-        uint256 actualInitialSupply = newYorkToken.totalSupply();
+    function testInitialTokenSupplyIsZero() public view {
+        uint256 expectedInitialTokenSupply = 0;
+        uint256 actualInitialTokenSupply = newYorkToken.totalSupply();
 
-        require(expectedInitialSupply == actualInitialSupply);
+        require(expectedInitialTokenSupply == actualInitialTokenSupply);
+    }
+
+    function testAirdrop() public {
+        address user = makeAddr("user");
+        uint256 mintAmount = 100 * 10 ** 18;
+
+        uint256 initialUserTokenSupply = newYorkToken.balanceOf(user);
+
+        vm.prank(user);
+        newYorkToken.airdropTokens(mintAmount);
+
+        uint256 newUserTokenSupply = newYorkToken.balanceOf(user);
+
+        require(newUserTokenSupply == (initialUserTokenSupply + mintAmount));
     }
 }
