@@ -20,4 +20,14 @@ contract NewYorkTokenTest is Test {
                 keccak256(abi.encodePacked(actualName))
         );
     }
+
+     function testSymbolIsInitializedCorrectly() public view {
+        string memory expectedSymbol = "NYT";
+        string memory actualSymbol = newYorkToken.symbol();
+
+        require(
+            keccak256(abi.encodePacked(expectedSymbol)) ==
+                keccak256(abi.encodePacked(actualSymbol))
+        );
+    }
 }
