@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             <p className="my-2 font-medium">Token Supply:</p>
           </div>
           <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
-            <p className="my-2 font-medium">Mint Tokens:</p>
+            <p className="my-2 font-medium">Airdrop Tokens:</p>
           </div>
         </div>
 
