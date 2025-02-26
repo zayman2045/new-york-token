@@ -17,4 +17,8 @@ contract NewYorkToken is ERC20, Ownable {
     function getName() public view returns (string memory) {
         return name();
     }
+
+     function getSymbol() public view returns (string memory) {
+        return symbol();
+    }
 }
