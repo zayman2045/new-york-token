@@ -8,7 +8,7 @@ contract NewYorkTokenTest is Test {
     NewYorkToken public newYorkToken;
 
     function setUp() public {
-        newYorkToken = new NewYorkToken();
+        newYorkToken = new NewYorkToken(1 ether);
     }
 
     function testNameIsInitializedCorrectly() public view {
