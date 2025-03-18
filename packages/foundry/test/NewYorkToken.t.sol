@@ -41,14 +41,28 @@ contract NewYorkTokenTest is Test {
     function testAirdrop() public {
         address user = makeAddr("user");
         uint256 mintAmount = 100 * 10 ** 18;
+        
+        // Fund user with ETH
+        vm.deal(user, 2 ether);
 
         uint256 initialUserTokenSupply = newYorkToken.balanceOf(user);
 
         vm.prank(user);
-        newYorkToken.airdropTokens(mintAmount);
+        newYorkToken.airdropTokens{value: 1 ether}(mintAmount);
 
         uint256 newUserTokenSupply = newYorkToken.balanceOf(user);
 
         require(newUserTokenSupply == (initialUserTokenSupply + mintAmount));
+    }
+
+    function testAirdropFeeIsCorrect() public {
+        address user = makeAddr("user");
+        uint256 mintAmount = 100 * 10 ** 18;
+
+        // Fund user with ETH
+        vm.deal(user, 2 ether);
+
+        vm.prank(user);
+        newYorkToken.airdropTokens{value: 1 ether}(mintAmount);
     }
 }
